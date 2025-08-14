@@ -53,6 +53,13 @@ informative:
 
 --- abstract
 
+This document presents a set of IMAP extensions, each of which is recommended
+as a priority for general-purpose IMAP client and server implementations.
+
+--- middle
+
+# Introduction
+
 IMAP4 (RFC 9051 et al.) is a complex protocol, and many extensions have been
 written over its decades of use.  Programmers working on IMAP4 clients or
 servers today have very little guidance on which extensions have much support
@@ -62,8 +69,6 @@ standards should be targeted by living IMAP4 code.  There are many trade-offs
 involved in implementing IMAP4.  This document focuses on reducing round trips
 required to complete common tasks and on eliminating likely confusion for users
 or user agents.
-
---- middle
 
 # Conventions and Definitions
 
