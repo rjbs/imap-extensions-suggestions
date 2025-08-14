@@ -177,7 +177,7 @@ In addition to the behavior from the specification:
   likely to confuse both users and their user agent software.
 - No one special use attribute should be present on two different mailboxes in
   a user's personal namespace.  A client should not be forced to pick between
-  two \Sent mailboxes, for example. 
+  two \Sent mailboxes, for example.
 - Special use mailboxes should be at the root of the user's personal mailbox
   hierarchy, and servers should reject attempts to move special-use mailboxes
   elsewhere in the hierarchy.  Usually, moving a special use mailbox from the
