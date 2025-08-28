@@ -34,7 +34,7 @@ as a priority for general-purpose IMAP client and server implementations.</t>
 
 <section anchor="introduction">
       <name>Introduction</name>
-      <t>IMAP4 (RFC 9051 et al.) is a complex protocol, and many extensions have been
+      <t>IMAP4 (<xref target="RFC9051"/>, <xref target="RFC3501"/>) is a complex protocol, and many extensions have been
 written over its decades of use.  Programmers working on IMAP4 clients or
 servers today have very little guidance on which extensions have much support
 or have significant value.  This document, prepared by a group of established
@@ -48,7 +48,7 @@ or user agents.</t>
       <name>Conventions and Definitions</name>
       <t>This document does not define a formal specification, and words "should" and
 "should not" are used with specific meaning in the document, distinct from that
-described in RFC 2119.</t>
+described in <xref target="RFC2119"/>.</t>
       <ul spacing="normal">
         <li>
           <t>should - This word means that the action described is strongly recommended
@@ -66,8 +66,8 @@ recommended against, and might hurt interoperability or usability.</t>
       <t>New server implementations should target IMAP4rev2.  This means some of the
 extensions listed below are required, and that the server is subject to certain
 further restrictions.  Existing server implementations that target earlier
-revisions of IMAP4 should pursue the recommended extensions below.  That is: we
-suggest IMAP4rev1 with all of the extensions below as a goal before full
+revisions of IMAP4 should pursue the recommended extensions below.  That is: it
+is suggested that IMAP4rev1 with all of the extensions below be a goal before full
 IMAP4rev2.</t>
       <t>IMAP4rev2 and IMAP4rev1 are both in active use, so IMAP4 clients should be
 capable of interoperating with either protocol.  Clients should avoid relying
@@ -76,35 +76,34 @@ features mandated in IMAP4rev2.  The extensions below were chosen with the goal
 of eliminating wasted effort.  They are either commonly offered even by
 IMAP4rev1 servers or provide so much utility that they are worth implementing
 as optional best-case code paths.</t>
-      <t>For a list of changes between revisions, see <eref target="https://datatracker.ietf.org/doc/html/rfc9051#changesFromIMAP4rev1">Appendix E of the
-RFC</eref>.</t>
+      <t>For a list of changes between IMAP4 revisions, see <xref target="RFC9051" section="E"/>.</t>
     </section>
     <section anchor="the-most-effective-imap-extensions">
       <name>The most effective IMAP extensions</name>
-      <t>These are the IMAP extensions we believe have the most impact and are most
+      <t>These are the IMAP extensions that are believed have the most impact and are most
 widely implemented.  They are listed in no particular order, and instead we've
 provided an explanation of their benefit, so that implementors can choose based
 on their product's priorities.</t>
       <section anchor="compress-rfc-4978">
         <name>COMPRESS, RFC 4978</name>
-        <t>With the COMPRESS extension enabled, the IMAP conversation in both directions
-is compressed using DEFLATE.  In practice, this leads to a 20-40% (or more)
+        <t>With the <xref target="RFC4978">COMPRESS</xref> extension enabled, the IMAP conversation in both directions
+is compressed using <xref target="RFC1951">DEFLATE</xref>.  In practice, this leads to a 20-40% (or more)
 reduction in bandwidth used.  The deflate algorithm is widely implemented and
 adds very little computing cost to providing service.</t>
       </section>
       <section anchor="condstore-and-qresync-rfc-7162">
         <name>CONDSTORE and QRESYNC, RFC 7162</name>
-        <t>These extensions provide efficient mechanisms for re-synchronization.  When an
+        <t><xref target="RFC7162">These extensions</xref> provide efficient mechanisms for re-synchronization.  When an
 IMAP client can make use of these features, it can efficiently update its local
 cache by only fetching new or changed data.  Without these features, the client
 needs to rescan old mail for changes.  Implementing these extensions reduces
-bandwidth requires and means an IMAP client is fully up to date much more
+bandwidth and means an IMAP client is fully up to date much more
 quickly after coming back online.  CONDSTORE and QRESYNC are probably the most
 important extensions to implement to improve IMAP efficiency.</t>
       </section>
       <section anchor="esearch-rfc-4731">
         <name>ESEARCH, RFC 4731</name>
-        <t>The ESEARCH extension (not to be confused with the ESEARCH command provided by
+        <t>The <xref target="RFC4731">ESEARCH</xref> extension (not to be confused with the ESEARCH command provided by
 the MULTISEARCH extension) extends the core search mechanism to allow limited
 results, get a count of results, and get results in a more compact format.
 This reduces bandwidth and can allow server-side query optimizations.</t>
@@ -112,7 +111,7 @@ This reduces bandwidth and can allow server-side query optimizations.</t>
       </section>
       <section anchor="id-rfc-2971">
         <name>ID, RFC 2971</name>
-        <t>The ID extension adds the ID command and response, through which the client
+        <t>The <xref target="RFC2971">ID</xref> extension adds the ID command and response, through which the client
 identifies itself (by name and version) to the server, and the server does the
 same in return.  When a client or server author digs into a bug or other
 problematic behavior, knowing what piece of software is at the other end of the
@@ -121,7 +120,7 @@ that there's a path to contact the maintainers of the software involved.</t>
       </section>
       <section anchor="move-rfc-6851">
         <name>MOVE, RFC 6851</name>
-        <t>The MOVE command provides a way to atomically move a message from one mailbox
+        <t>The <xref target="RFC6851">MOVE</xref> command provides a way to atomically move a message from one mailbox
 to another, combining a message copy and expunge.  This eliminates the
 possibility of a copied-but-not-deleted message.  Also, because there's no
 intermediate state where the message exists twice, the command won't fail due
@@ -130,11 +129,11 @@ to quota limitations.</t>
       </section>
       <section anchor="multisearch-rfc-7377">
         <name>MULTISEARCH, RFC 7377</name>
-        <t>This extension adds a new command (ESEARCH, not to be confused with the ESEARCH capability) which can search multiple mailboxes at once.  This makes searches both faster and more efficient.  Without multisearch, searching multiple mailboxes will require the client pipeline a series of SELECT and SEARCH command.  Combining these into as single command may also permit the server to perform a much more efficient search.</t>
+        <t><xref target="RFC7377">This extension</xref> adds a new command (ESEARCH, not to be confused with the ESEARCH capability) which can search multiple mailboxes at once.  This makes searches both faster and more efficient.  Without multisearch, searching multiple mailboxes will require the client to pipeline a series of SELECT and SEARCH command.  Combining these into as single command may also permit the server to perform a much more efficient search.</t>
       </section>
       <section anchor="objectid-rfc-8474">
         <name>OBJECTID, RFC 8474</name>
-        <t>The OBJECTID extension provides unique identifiers to messages and threads.
+        <t>The <xref target="RFC8474">OBJECTID</xref> extension provides unique identifiers to messages and threads.
 This has a number of distinct benefits:</t>
         <ul spacing="normal">
           <li>
@@ -158,13 +157,13 @@ target server.</t>
       </section>
       <section anchor="special-use-rfc-6154">
         <name>SPECIAL-USE, RFC 6154</name>
-        <t>The SPECIAL-USE extension describes a way to add metadata to a mailbox to
+        <t>The <xref target="RFC6154">SPECIAL-USE</xref> extension describes a way to add metadata to a mailbox to
 indicate that the mailbox is for a well-known purpose.  For example, the trash
 mailbox or sent mailbox can be marked as such.  This helps client authors meet
 user expectations consistently across implementations.  On servers without this
 extension, clients are left to make their own mailboxes, and two clients may
 pick different names, leaving the user with both "Sent" and "Sent Messages".</t>
-        <t>At minimum servers and clients should most implement support for \Drafts,
+        <t>At minimum servers and clients should implement support for \Drafts,
 \Junk, \Sent, and \Trash.</t>
         <t>In addition to the behavior from the specification:</t>
         <ul spacing="normal">
@@ -196,9 +195,9 @@ specific scenarios than the more general-use extensions listed in the previous
 section</t>
       <section anchor="notify-rfc-5465">
         <name>NOTIFY, RFC 5465</name>
-        <t>Core IMAP4rev2 includes the IDLE command, which allows the client to switch
+        <t>Core IMAP4rev2 includes the <xref target="RFC2177">IDLE</xref> command, which allows the client to switch
 into a passive mode and request that updates to the currently selected mailbox
-instead be pushed to client by the server.  The NOTIFY extension provides an
+instead be pushed to client by the server.  The <xref target="RFC5465">NOTIFY</xref> extension provides an
 improved from of IDLE.  It can instruct the server to provide updates for
 multiple mailboxes, and to send STATUS lines for mailboxes with updates.</t>
         <t>This is especially valuable for servers that may deliver new mail to mailboxes
@@ -206,7 +205,7 @@ other than the inbox, using mail rules or other routing.</t>
       </section>
       <section anchor="preview-rfc-8970">
         <name>PREVIEW, RFC 8970</name>
-        <t>The PREVIEW extension provides another property on messages, PREVIEW, which
+        <t>The <xref target="RFC8970">PREVIEW</xref> extension provides another property on messages, PREVIEW, which
 will store a short plain-text snippet of text that serves as a preview of the
 message content.  If a server provides message previews, clients can show
 message previews without having to fetch body structure or body parts.  When
@@ -215,7 +214,7 @@ preview.</t>
       </section>
       <section anchor="replace-rfc-8508">
         <name>REPLACE, RFC 8508</name>
-        <t>The REPLACE command provides a way to atomically replace one message with
+        <t>The <xref target="RFC8508">REPLACE</xref> command provides a way to atomically replace one message with
 another, combining an append and single-message expunge.  It's primarily used
 for managing draft messages, but can also be used for editing messages "in
 place" in other ways.</t>
@@ -249,6 +248,26 @@ form of commands to achieve better client and server performance</t>
   </middle>
   <back>
     <?line 251?>
+
+    <references>
+      <name>Informative References</name>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.1951.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2177.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2971.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3501.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4731.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4978.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5465.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6154.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6851.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7162.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7377.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8474.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8508.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8970.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9051.xml"/>
+    </references>
 
 <section numbered="false" anchor="acknowledgments">
       <name>Acknowledgments</name>
