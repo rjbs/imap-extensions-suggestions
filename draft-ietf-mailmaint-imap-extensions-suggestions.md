@@ -44,7 +44,7 @@ as a priority for general-purpose IMAP client and server implementations.
 
 # Introduction
 
-IMAP4 (RFC 9051 et al.) is a complex protocol, and many extensions have been
+IMAP4 ({{!IMAP4rev2=RFC9051}} et al.) is a complex protocol, and many extensions have been
 written over its decades of use.  Programmers working on IMAP4 clients or
 servers today have very little guidance on which extensions have much support
 or have significant value.  This document, prepared by a group of established
@@ -58,7 +58,7 @@ or user agents.
 
 This document does not define a formal specification, and words "should" and
 "should not" are used with specific meaning in the document, distinct from that
-described in RFC 2119.
+described in {{?RFC2119}}.
 
 * should - This word means that the action described is strongly recommended
   and will enhance interoperability or usability.
@@ -67,7 +67,7 @@ described in RFC 2119.
 
 # Core Protocol Version
 
-The current IMAP protocol is IMAP4rev2, specified in RFC 9051.
+The current IMAP protocol is IMAP4rev2, specified in {{IMAP4rev2}}.
 
 New server implementations should target IMAP4rev2.  This means some of the
 extensions listed below are required, and that the server is subject to certain
@@ -86,12 +86,10 @@ as optional best-case code paths.
 
 For an IMAP4rev1 client, the most essential components of IMAP4rev2 are:
 
-* support for [ENABLE](https://datatracker.ietf.org/doc/html/rfc5161), without
-  which many other extensions can't be enabled
-* support for UTF-8 as also described in
-  [UTF8=ACCEPT](https://datatracker.ietf.org/doc/html/rfc9755)
-* the list of new mailbox attributes from
-  [SPECIAL-USE](https://datatracker.ietf.org/doc/html/rfc6154)
+* support for {{!ENABLE=RFC5161}}, without which other extensions can't be
+  enabled
+* support for UTF-8 as also described in {{!UTF8ACCEPT=RFC9755}}
+* the list of new mailbox attributes from {{!SPECIAL-USE=RFC6154}}
 * the removal of the CHECK command
 
 The rest of IMAP4rev2 provides extensions that may be beneficial for a client,
@@ -254,7 +252,7 @@ append-then-expunge.
 When possible, clients should use the UID command instead of the message
 sequence number commands it supersedes.  For example, UID FETCH, not FETCH.
 UIDs persist between IMAP sessions, making offline operation simpler.  When the
-UIDONLY extension {{?RFC9586}} is available, it permits sessions using only the
+{{!UIDONLY=RFC9586}} extension is available, it permits sessions using only the
 UID form of commands to achieve better client and server performance.
 
 # Additional notes for server implementations
