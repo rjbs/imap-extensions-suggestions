@@ -253,9 +253,9 @@ append-then-expunge.
 
 When possible, clients should use the UID command instead of the message
 sequence number commands it supersedes.  For example, UID FETCH, not FETCH.
-UIDs persist between IMAP sessions, making offline operation simpler.  In the
-future, the UIDONLY extension, RFC 9586, may permit sessions using only the UID
-form of commands to achieve better client and server performance
+UIDs persist between IMAP sessions, making offline operation simpler.  When the
+UIDONLY extension {{?RFC9586}} is available, it permits sessions using only the
+UID form of commands to achieve better client and server performance.
 
 # Additional notes for server implementations
 
