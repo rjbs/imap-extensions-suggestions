@@ -261,7 +261,10 @@ form of commands to achieve better client and server performance
 
 # Additional notes for server implementations
 
-Retrieving the BODYSTRUCTURE data item should be efficient.  IMAP4 clients will expect fetching the BODYSTRUCTURE to cost no more than fetching the ENVELOPE.  Slow implementations, like parsing the stored message for each request, are likely to result in a poor user experience.
+Retrieving the BODYSTRUCTURE data item should be efficient.  IMAP4 clients will
+expect fetching the BODYSTRUCTURE to cost no more than fetching the ENVELOPE.
+Slow implementations, like parsing the stored message for each request, are
+likely to result in a poor user experience.
 
 # Security Considerations
 
