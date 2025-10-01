@@ -122,6 +122,8 @@ bandwidth requires and means an IMAP client is fully up to date much more
 quickly after coming back online.  CONDSTORE and QRESYNC are probably the most
 important extensions to implement to improve IMAP efficiency.
 
+For clients that perform no local caching, these extensions provide no benefit.
+
 ## ESEARCH, RFC 4731
 
 The ESEARCH extension (not to be confused with the ESEARCH command provided by
