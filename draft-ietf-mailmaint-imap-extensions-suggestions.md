@@ -203,6 +203,18 @@ multiple mailboxes, and to send STATUS lines for mailboxes with updates.
 This is especially valuable for servers that may deliver new mail to mailboxes
 other than the inbox, using mail rules or other routing.
 
+While implementing NOTIFY is demanding for servers, clients can get most of the
+benefit without too much effort.  Most clients need only send this command:
+
+    NOTIFY SET (SELECTED (MESSAGENEW (UID) MESSAGEEXPUNGE))
+
+...and they will receive prompt notices about new and deleted messages and
+may not need to write any further code.
+
+Clients that only listen to responses when they send commands should use
+SELECTED-DELAYED instead of SELECTED. Clients that also implement OBJECTID may
+send (UID EMAILID THREADID) instead of (UID)."
+
 ## PREVIEW, RFC 8970
 
 The PREVIEW extension provides another property on messages, PREVIEW, which
