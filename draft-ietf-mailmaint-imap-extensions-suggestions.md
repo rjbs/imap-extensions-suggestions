@@ -84,7 +84,20 @@ of eliminating wasted effort.  They are either commonly offered even by
 IMAP4rev1 servers or provide so much utility that they are worth implementing
 as optional best-case code paths.
 
-For a list of changes between revisions, see [Appendix E of the
+For an IMAP4rev1 client, the most essential components of IMAP4rev2 are:
+
+* support for [ENABLE](https://datatracker.ietf.org/doc/html/rfc5161), without
+  which many other extensions can't be enabled
+* support for UTF-8 as also described in
+  [UTF8=ACCEPT](https://datatracker.ietf.org/doc/html/rfc9755)
+* the list of new mailbox attributes from
+  [SPECIAL-USE](https://datatracker.ietf.org/doc/html/rfc6154)
+* the removal of the CHECK command
+
+The rest of IMAP4rev2 provides extensions that may be beneficial for a client,
+but don't necessarily have to be used. Many of those extensions are mentioned
+in separate sections below.  For a complete list of changes between revisions,
+see [Appendix E of the
 RFC](https://datatracker.ietf.org/doc/html/rfc9051#changesFromIMAP4rev1).
 
 # The most effective IMAP extensions
