@@ -251,8 +251,6 @@ append-then-expunge.
 
 # Additional notes for client implementations
 
-_For one item, I have only a vague not here, "utf8 v utf8", which needs clarifying or to be dropped._
-
 When possible, clients should use the UID command instead of the message
 sequence number commands it supersedes.  For example, UID FETCH, not FETCH.
 UIDs persist between IMAP sessions, making offline operation simpler.  In the
