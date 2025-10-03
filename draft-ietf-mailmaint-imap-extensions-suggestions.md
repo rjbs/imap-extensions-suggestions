@@ -44,15 +44,15 @@ as a priority for general-purpose IMAP client and server implementations.
 
 # Introduction
 
-IMAP4 ({{!IMAP4rev2=RFC9051}} et al.) is a complex protocol, and many extensions have been
-written over its decades of use.  Programmers working on IMAP4 clients or
-servers today have very little guidance on which extensions have much support
-or have significant value.  This document, prepared by a group of established
-IMAP4 client and server authors, is meant to serve as an overview of which
-standards should be targeted by living IMAP4 code.  There are many trade-offs
-involved in implementing IMAP4.  This document focuses on reducing round trips
-required to complete common tasks and on eliminating likely confusion for users
-or user agents.
+IMAP4 ({{!IMAP4rev2=RFC9051}} et al.) is a complex protocol, and many
+extensions have been written over its decades of use.  Programmers working on
+IMAP4 clients or servers today have very little guidance on which extensions
+have much support or have significant value.  This document, prepared by a
+group of established IMAP4 client and server authors, is meant to serve as an
+overview of which standards should be targeted by living IMAP4 code.  There are
+many trade-offs involved in implementing IMAP4.  This document focuses on
+reducing round trips required to complete common tasks and on eliminating
+likely confusion for users or user agents.
 
 # Conventions and Definitions
 
