@@ -233,15 +233,6 @@ Clients that only listen to responses when they send commands should use
 SELECTED-DELAYED instead of SELECTED. Clients that also implement OBJECTID may
 send (UID EMAILID THREADID) instead of (UID)."
 
-## PREVIEW, RFC 8970
-
-The PREVIEW extension provides another property on messages, PREVIEW, which
-will store a short plain-text snippet of text that serves as a preview of the
-message content.  If a server provides message previews, clients can show
-message previews without having to fetch body structure or body parts.  When
-clients use server-provided preview text, all clients will have a consistent
-preview.
-
 ## REPLACE, RFC 8508
 
 The REPLACE command provides a way to atomically replace one message with
