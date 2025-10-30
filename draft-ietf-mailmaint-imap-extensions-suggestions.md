@@ -152,15 +152,6 @@ to quota limitations.
 
 This extension is required by IMAP4rev2.
 
-## MULTISEARCH, RFC 7377
-
-This extension adds a new command (ESEARCH, not to be confused with the ESEARCH
-capability) which can search multiple mailboxes at once.  This makes searches
-both faster and more efficient.  Without multisearch, searching multiple
-mailboxes will require the client pipeline a series of SELECT and SEARCH
-command.  Combining these into as single command may also permit the server to
-perform a much more efficient search.
-
 ## OBJECTID, RFC 8474
 
 The OBJECTID extension provides unique identifiers to messages and threads.
@@ -209,6 +200,15 @@ This extension is required by IMAP4rev2.
 These extensions are also useful and recommended, although they apply to more
 specific scenarios than the more general-use extensions listed in the previous
 section
+
+## MULTISEARCH, RFC 7377
+
+This extension adds a new command (ESEARCH, not to be confused with the ESEARCH
+capability) which can search multiple mailboxes at once.  This makes searches
+both faster and more efficient.  Without multisearch, searching multiple
+mailboxes will require the client pipeline a series of SELECT and SEARCH
+command.  Combining these into as single command may also permit the server to
+perform a much more efficient search.
 
 ## NOTIFY, RFC 5465
 
