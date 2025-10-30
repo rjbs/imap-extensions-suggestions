@@ -6,12 +6,12 @@
 title: "IMAP Extensions Suggestions"
 category: info
 
-docname: draft-ietf-mailmaint-imap-extensions-suggestions-00
+docname: draft-ietf-mailmaint-imap-extensions-suggestions-01
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
-v: 3
+v: 1
 area: ART
 workgroup: Mail Maintenance
 keyword:
