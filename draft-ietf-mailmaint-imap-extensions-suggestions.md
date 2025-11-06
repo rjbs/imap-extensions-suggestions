@@ -207,15 +207,15 @@ This extension adds a new command (ESEARCH, not to be confused with the ESEARCH
 capability) which can search multiple mailboxes at once.  This makes searches
 both faster and more efficient.  Without multisearch, searching multiple
 mailboxes will require the client to pipeline a series of SELECT and SEARCH
-command.  Combining these into as single command may also permit the server to
+commands.  Combining these into a single command may also permit the server to
 perform a much more efficient search.
 
 ## NOTIFY, RFC 5465
 
 Core IMAP4rev2 includes the IDLE command, which allows the client to switch
 into a passive mode and request that updates to the currently selected mailbox
-instead be pushed to client by the server.  The NOTIFY extension provides an
-improved from of IDLE.  It can instruct the server to provide updates for
+instead be pushed to the client by the server.  The NOTIFY extension provides
+an improved form of IDLE.  It can instruct the server to provide updates for
 multiple mailboxes, and to send STATUS lines for mailboxes with updates.
 
 This is especially valuable for servers that may deliver new mail to mailboxes
