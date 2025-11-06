@@ -127,9 +127,9 @@ For clients that perform no local caching, these extensions provide no benefit.
 ## ESEARCH, RFC 4731
 
 The ESEARCH extension (not to be confused with the ESEARCH command provided by
-the MULTISEARCH extension) extends the core search mechanism to allow limited
-results, get a count of results, and get results in a more compact format.
-This reduces bandwidth and can allow server-side query optimizations.
+the MULTISEARCH extension) extends the core search mechanism to allow limiting
+results, getting a count of results, and getting results in a more compact
+format.  This reduces bandwidth and can allow server-side query optimizations.
 
 This extension is required by IMAP4rev2.
 
