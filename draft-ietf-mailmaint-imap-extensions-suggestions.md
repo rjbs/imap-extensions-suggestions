@@ -206,7 +206,7 @@ section
 This extension adds a new command (ESEARCH, not to be confused with the ESEARCH
 capability) which can search multiple mailboxes at once.  This makes searches
 both faster and more efficient.  Without multisearch, searching multiple
-mailboxes will require the client pipeline a series of SELECT and SEARCH
+mailboxes will require the client to pipeline a series of SELECT and SEARCH
 command.  Combining these into as single command may also permit the server to
 perform a much more efficient search.
 
