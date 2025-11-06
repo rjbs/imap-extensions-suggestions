@@ -107,46 +107,49 @@ on their product's priorities.
 
 ## COMPRESS, RFC 4978
 
-With the COMPRESS extension enabled, the IMAP conversation in both directions
-is compressed using DEFLATE.  In practice, this leads to a 20-40% (or more)
-reduction in bandwidth used.  The deflate algorithm is widely implemented and
-adds very little computing cost to providing service.
+With the {{?COMPRESS=RFC4978}} extension enabled, the IMAP conversation in both
+directions is compressed using DEFLATE.  In practice, this leads to a 20-40%
+(or more) reduction in bandwidth used.  The deflate algorithm is widely
+implemented and adds very little computing cost to providing service.
 
 ## CONDSTORE and QRESYNC, RFC 7162
 
-These extensions provide efficient mechanisms for re-synchronization.  When an
-IMAP client can make use of these features, it can efficiently update its local
-cache by only fetching new or changed data.  Without these features, the client
-needs to rescan old mail for changes.  Implementing these extensions reduces
-bandwidth usage and means an IMAP client is fully up to date much more quickly
-after coming back online.  CONDSTORE and QRESYNC are probably the most
-important extensions to implement to improve IMAP efficiency.
+These extensions, from {{?RFC7162}} provide efficient mechanisms for
+re-synchronization.  When an IMAP client can make use of these features, it can
+efficiently update its local cache by only fetching new or changed data.
+Without these features, the client needs to rescan old mail for changes.
+Implementing these extensions reduces bandwidth usage and means an IMAP client
+is fully up to date much more quickly after coming back online.  CONDSTORE and
+QRESYNC are probably the most important extensions to implement to improve IMAP
+efficiency.
 
 For clients that perform no local caching, these extensions provide no benefit.
 
 ## ESEARCH, RFC 4731
 
-The ESEARCH extension (not to be confused with the ESEARCH command provided by
-the MULTISEARCH extension) extends the core search mechanism to allow limiting
-results, getting a count of results, and getting results in a more compact
-format.  This reduces bandwidth and can allow server-side query optimizations.
+The {{?ESEARCH=RFC4731}} extension (not to be confused with the ESEARCH command
+provided by the MULTISEARCH extension) extends the core search mechanism to
+allow limiting results, getting a count of results, and getting results in a
+more compact format.  This reduces bandwidth and can allow server-side query
+optimizations.
 
 This extension is required by IMAP4rev2.
 
 ## ID, RFC 2971
 
-The ID extension adds the ID command and response, through which the client
-identifies itself (by name and version) to the server, and the server does the
-same in return.  When a client or server author digs into a bug or other
-problematic behavior, knowing what piece of software is at the other end of the
-connection makes it easier to reproduce and diagnose problems.  It also means
-that there's a path to contact the maintainers of the software involved.
+The {{?ID=RFC2971}} extension adds the ID command and response, through which
+the client identifies itself (by name and version) to the server, and the
+server does the same in return.  When a client or server author digs into a bug
+or other problematic behavior, knowing what piece of software is at the other
+end of the connection makes it easier to reproduce and diagnose problems.  It
+also means that there's a path to contact the maintainers of the software
+involved.
 
 ## MOVE, RFC 6851
 
-The MOVE command provides a way to atomically move a message from one mailbox
-to another, combining a message copy and expunge.  This eliminates the
-possibility of a copied-but-not-deleted message.  Also, because there's no
+The {{?MOVE=RFC6851}} command provides a way to atomically move a message from
+one mailbox to another, combining a message copy and expunge.  This eliminates
+the possibility of a copied-but-not-deleted message.  Also, because there's no
 intermediate state where the message exists twice, the command won't fail due
 to quota limitations.
 
@@ -154,8 +157,8 @@ This extension is required by IMAP4rev2.
 
 ## OBJECTID, RFC 8474
 
-The OBJECTID extension provides unique identifiers to messages and threads.
-This has a number of distinct benefits:
+The {{?OBJECTID=RFC8474}} extension provides unique identifiers to messages and
+threads.  This has a number of distinct benefits:
 
 - Mailbox renames can be synchronized extremely efficiently.  Without a mailbox
   id, synchronizing a mailbox rename can be very expensive, especially if it
@@ -169,12 +172,13 @@ This has a number of distinct benefits:
 
 ## SPECIAL-USE, RFC 6154
 
-The SPECIAL-USE extension describes a way to add metadata to a mailbox to
-indicate that the mailbox is for a well-known purpose.  For example, the trash
-mailbox or sent mailbox can be marked as such.  This helps client authors meet
-user expectations consistently across implementations.  On servers without this
-extension, clients are left to make their own mailboxes, and two clients may
-pick different names, leaving the user with both "Sent" and "Sent Messages".
+The {{?SPECIAL-USE=RFC6154}} extension describes a way to add metadata to a
+mailbox to indicate that the mailbox is for a well-known purpose.  For example,
+the trash mailbox or sent mailbox can be marked as such.  This helps client
+authors meet user expectations consistently across implementations.  On servers
+without this extension, clients are left to make their own mailboxes, and two
+clients may pick different names, leaving the user with both "Sent" and "Sent
+Messages".
 
 At minimum, servers and clients should implement support for \Drafts, \Junk,
 \Sent, and \Trash.
@@ -203,20 +207,21 @@ section
 
 ## MULTISEARCH, RFC 7377
 
-This extension adds a new command (ESEARCH, not to be confused with the ESEARCH
-capability) which can search multiple mailboxes at once.  This makes searches
-both faster and more efficient.  Without multisearch, searching multiple
-mailboxes will require the client to pipeline a series of SELECT and SEARCH
-commands.  Combining these into a single command may also permit the server to
-perform a much more efficient search.
+The {{?MULTISEARCH=RFC7377}} extension adds a new command (ESEARCH, not to be
+confused with the ESEARCH capability) which can search multiple mailboxes at
+once.  This makes searches both faster and more efficient.  Without
+multisearch, searching multiple mailboxes will require the client to pipeline a
+series of SELECT and SEARCH commands.  Combining these into a single command
+may also permit the server to perform a much more efficient search.
 
 ## NOTIFY, RFC 5465
 
 Core IMAP4rev2 includes the IDLE command, which allows the client to switch
 into a passive mode and request that updates to the currently selected mailbox
-instead be pushed to the client by the server.  The NOTIFY extension provides
-an improved form of IDLE.  It can instruct the server to provide updates for
-multiple mailboxes, and to send STATUS lines for mailboxes with updates.
+instead be pushed to the client by the server.  The {{?NOTIFY=RFC5465}}
+extension provides an improved form of IDLE.  It can instruct the server to
+provide updates for multiple mailboxes, and to send STATUS lines for mailboxes
+with updates.
 
 This is especially valuable for servers that may deliver new mail to mailboxes
 other than the inbox, using mail rules or other routing.
@@ -235,10 +240,10 @@ send (UID EMAILID THREADID) instead of (UID)."
 
 ## REPLACE, RFC 8508
 
-The REPLACE command provides a way to atomically replace one message with
-another, combining an append and single-message expunge.  It's primarily used
-for managing draft messages, but can also be used for editing messages "in
-place" in other ways.
+The {{?REPLACE=RFC8508}} command provides a way to atomically replace one
+message with another, combining an append and single-message expunge.  It's
+primarily used for managing draft messages, but can also be used for editing
+messages "in place" in other ways.
 
 Use of the REPLACE command eliminates the possibility of appending without
 deleting message.  Also, because there's no intermediate state, a REPLACE
