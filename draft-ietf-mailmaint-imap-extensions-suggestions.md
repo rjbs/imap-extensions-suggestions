@@ -176,8 +176,8 @@ user expectations consistently across implementations.  On servers without this
 extension, clients are left to make their own mailboxes, and two clients may
 pick different names, leaving the user with both "Sent" and "Sent Messages".
 
-At minimum servers and clients should most implement support for \Drafts,
-\Junk, \Sent, and \Trash.
+At minimum, servers and clients should implement support for \Drafts, \Junk,
+\Sent, and \Trash.
 
 In addition to the behavior from the specification:
 
