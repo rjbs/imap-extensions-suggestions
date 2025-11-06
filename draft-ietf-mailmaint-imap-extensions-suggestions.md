@@ -164,8 +164,8 @@ This has a number of distinct benefits:
   id in addition to name.
 - Messages appearing in multiple mailboxes only need to be synchronized once,
   saving bandwidth and storage space.
-- The object ids can be used to make {{?JMAP=RFC8620}} calls, if JMAP is
-  available for the target server.
+- The unique identifiers can be used to make {{?JMAP=RFC8620}} calls, if JMAP
+  is available for the target server.
 
 ## SPECIAL-USE, RFC 6154
 
