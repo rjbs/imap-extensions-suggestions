@@ -118,8 +118,8 @@ These extensions provide efficient mechanisms for re-synchronization.  When an
 IMAP client can make use of these features, it can efficiently update its local
 cache by only fetching new or changed data.  Without these features, the client
 needs to rescan old mail for changes.  Implementing these extensions reduces
-bandwidth requires and means an IMAP client is fully up to date much more
-quickly after coming back online.  CONDSTORE and QRESYNC are probably the most
+bandwidth usage and means an IMAP client is fully up to date much more quickly
+after coming back online.  CONDSTORE and QRESYNC are probably the most
 important extensions to implement to improve IMAP efficiency.
 
 For clients that perform no local caching, these extensions provide no benefit.
