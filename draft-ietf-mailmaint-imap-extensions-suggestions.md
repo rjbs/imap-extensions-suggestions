@@ -145,6 +145,18 @@ end of the connection makes it easier to reproduce and diagnose problems.  It
 also means that there's a path to contact the maintainers of the software
 involved.
 
+## IDLE, RFC 2177
+
+The {{?IDLE=RFC2177}} extension allows the client to switch into a passive mode
+and request that updates to the currently selected mailbox instead be pushed to
+the client by the server.  It is widely implemented by both clients and
+servers.  It replaces continued polling or reconnection to check for new mail,
+reducing network overhead and providing lower-latency updates to end users.
+
+This extension is required by IMAP4rev2.
+
+For a more richly-featured replacement to IDLE, see NOTIFY below.
+
 ## MOVE, RFC 6851
 
 The {{?MOVE=RFC6851}} command provides a way to atomically move a message from
@@ -216,12 +228,11 @@ may also permit the server to perform a much more efficient search.
 
 ## NOTIFY, RFC 5465
 
-Core IMAP4rev2 includes the IDLE command, which allows the client to switch
-into a passive mode and request that updates to the currently selected mailbox
-instead be pushed to the client by the server.  The {{?NOTIFY=RFC5465}}
-extension provides an improved form of IDLE.  It can instruct the server to
-provide updates for multiple mailboxes, and to send STATUS lines for mailboxes
-with updates.
+The IDLE command, described above, switches the IMAP conversation into a
+massive mode where the server will push changes to the currently selected
+mailbox.  The {{?NOTIFY=RFC5465}} extension provides an improved form of IDLE.
+It can instruct the server to provide updates for multiple mailboxes, and to
+send STATUS lines for mailboxes with updates.
 
 This is especially valuable for servers that may deliver new mail to mailboxes
 other than the inbox, using mail rules or other routing.
