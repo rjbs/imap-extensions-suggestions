@@ -224,6 +224,17 @@ In addition to the behavior from the specification:
 
 This extension is required by IMAP4rev2.
 
+## UIDPLUS, RFC 4315
+
+The {{?UIDPLUS=RFC4315}} extension adds a new command (UID EXPUNGE) and several
+response codes.  The UID EXPUNGE command allows for expunging of deleted mail
+included in the sequence set provided as a command argument.  Because it uses
+UIDs instead of sequence numbers, it can be used by clients synchronizing from
+an offline state.  Without UID EXPUNGE, the client must either toggle the
+`\Deleted` flag on messages or risk purging more mail than expected.
+
+This extension is required by IMAP4rev2.
+
 # Further effective IMAP extensions
 
 These extensions are also useful and recommended, although they apply to more
