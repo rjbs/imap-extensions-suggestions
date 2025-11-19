@@ -2,7 +2,7 @@
 title: "IMAP Extensions Suggestions"
 category: info
 
-docname: draft-ietf-mailmaint-imap-extensions-suggestions-01
+docname: draft-ietf-mailmaint-imap-extensions-suggestions-02
 submissiontype: IETF
 number:
 date:
