@@ -157,6 +157,19 @@ This extension is required by IMAP4rev2.
 
 For a more richly-featured replacement to IDLE, see NOTIFY below.
 
+## LITERAL+, RFC7888
+
+The {{?LITERAL+=RFC7888}} extension introduces both LITERAL+ and LITERAL- as
+capabilities.  These capabilities indicate support for *non-synchronizing*
+string literals.  Without this capability, a client sending a literal to the
+server must wait for the server to acknowledge that it is now waiting for the
+content of a literal.  Using the non-synchronizing form, the literal's content
+may be transmitted immediately.  This reduces wait time and round trips between
+client and server.  LITERAL+ and LITERAL- are widely implemented in clients and
+servers.  LITERAL- support is a strict subset of LITERAL+ support.
+
+LITERAL+ is required by IMAP4rev2.
+
 ## MOVE, RFC 6851
 
 The {{?MOVE=RFC6851}} command provides a way to atomically move a message from
