@@ -149,9 +149,9 @@ involved.
 
 The {{?IDLE=RFC2177}} extension allows the client to switch into a passive mode
 and request that updates to the currently selected mailbox instead be pushed to
-the client by the server.  It is widely implemented by both clients and
-servers.  It replaces continued polling or reconnection to check for new mail,
-reducing network overhead and providing lower-latency updates to end users.
+the client by the server.  It replaces continued polling or reconnection to
+check for new mail, reducing network overhead and providing lower-latency
+updates to end users.
 
 This extension is required by IMAP4rev2.
 
@@ -165,8 +165,7 @@ string literals.  Without this capability, a client sending a literal to the
 server must wait for the server to acknowledge that it is now waiting for the
 content of a literal.  Using the non-synchronizing form, the literal's content
 may be transmitted immediately.  This reduces wait time and round trips between
-client and server.  LITERAL+ and LITERAL- are widely implemented in clients and
-servers.  LITERAL- support is a strict subset of LITERAL+ support.
+client and server.  LITERAL- support is a strict subset of LITERAL+ support.
 
 LITERAL+ is required by IMAP4rev2.
 
