@@ -1,13 +1,9 @@
 ---
-###
-# Internet-Draft Markdown Template
-#
-###
 title: "IMAP Extensions Suggestions"
 category: info
 
 docname: draft-ietf-mailmaint-imap-extensions-suggestions-01
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+submissiontype: IETF
 number:
 date:
 consensus: true
@@ -16,24 +12,11 @@ area: ART
 workgroup: Mail Maintenance
 keyword:
  - imap
-# venue:
-#   group: WG
-#   type: Working Group
-#   mail: WG@example.com
-#   arch: https://example.com/WG
-#   github: USER/REPO
-#   latest: https://example.com/LATEST
 
 author:
- -
-    fullname: Ricardo Signes
-    organization: Fastmail
-    email: rjbs@semiotic.systems
-
-normative:
-
-informative:
-
+ - fullname: Ricardo Signes
+   organization: Fastmail
+   email: rjbs@semiotic.systems
 
 --- abstract
 
@@ -159,7 +142,7 @@ For a more richly-featured replacement to IDLE, see NOTIFY below.
 
 ## LITERAL+, RFC7888
 
-The {{?LITERAL+=RFC7888}} extension introduces both LITERAL+ and LITERAL- as
+The {{?LITERALPLUS=RFC7888}} extension introduces both LITERAL+ and LITERAL- as
 capabilities.  These capabilities indicate support for *non-synchronizing*
 string literals.  Without this capability, a client sending a literal to the
 server must wait for the server to acknowledge that it is now waiting for the
