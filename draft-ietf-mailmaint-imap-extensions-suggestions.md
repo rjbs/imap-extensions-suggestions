@@ -7,7 +7,7 @@ submissiontype: IETF
 number:
 date:
 consensus: true
-v: 1
+v: 3
 area: ART
 workgroup: Mail Maintenance
 keyword:
