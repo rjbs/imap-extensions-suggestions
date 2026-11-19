@@ -2,7 +2,7 @@
 title: "IMAP Extensions Suggestions"
 category: info
 
-docname: draft-ietf-mailmaint-imap-extensions-suggestions-02
+docname: draft-ietf-mailmaint-imap-extensions-suggestions-03
 submissiontype: IETF
 number:
 date:
@@ -17,6 +17,12 @@ author:
  - fullname: Ricardo Signes
    organization: Fastmail
    email: rjbs@semiotic.systems
+ - fullname: Matt Diephouse
+   organization: Apple Inc
+   email: diephouse@apple.com
+ - fullname: Daniel Eggert
+   organization: Apple Inc
+   email: deggert@apple.com
 
 --- abstract
 
