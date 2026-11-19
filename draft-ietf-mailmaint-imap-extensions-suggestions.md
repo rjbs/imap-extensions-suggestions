@@ -168,20 +168,27 @@ to quota limitations.
 
 This extension is required by IMAP4rev2.
 
-## OBJECTID, RFC 8474
+## OBJECTID+
 
-The {{?OBJECTID=RFC8474}} extension provides unique identifiers to messages and
-threads.  This has a number of distinct benefits:
+The {{?OBJECTID=I-D.ietf-mailmaint-imap-objectid-bis}} extension provides
+unique identifiers to mailboxes, messages, and threads.  It obsoletes the
+earlier OBJECTID extension from {{?RFC8474}}, but a server may advertise both
+capabilities so that older clients continue to work.  This has a number of
+distinct benefits:
 
 - Mailbox renames can be synchronized extremely efficiently.  Without a mailbox
   id, synchronizing a mailbox rename can be very expensive, especially if it
   has child mailboxes.
+- Clients can SELECT or EXAMINE a mailbox by its id rather than its name, so a
+  rename made by another client does not prevent reselecting it.
 - Mailbox renames need not break Sieve scripts, which can target mailboxes by
   id in addition to name.
 - Messages appearing in multiple mailboxes only need to be synchronized once,
   saving bandwidth and storage space.
 - The unique identifiers can be used to make {{?JMAP=RFC8620}} calls, if JMAP
-  is available for the target server.
+  is available for the target server.  When the server also advertises
+  {{?JMAPACCESS=RFC9698}}, the account id it reports is the JMAP accountId to
+  use.
 
 ## SPECIAL-USE, RFC 6154
 
@@ -258,8 +265,8 @@ benefit without too much effort.  Most clients need only send this command:
 may not need to write any further code.
 
 Clients that only listen to responses when they send commands should use
-SELECTED-DELAYED instead of SELECTED. Clients that also implement OBJECTID may
-send (UID EMAILID THREADID) instead of (UID)."
+SELECTED-DELAYED instead of SELECTED. Clients that also implement OBJECTID+ may
+send (UID OBJECTID) instead of (UID).
 
 ## REPLACE, RFC 8508
 
